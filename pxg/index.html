@@ -1,1 +1,132 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PXG • Dashboard</title><style>body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px;background:radial-gradient(circle at 20% 0%,#1f5e31 0,transparent 35rem),#07100b;color:#edf7f0;font-family:Inter,system-ui,sans-serif}.card{width:min(720px,100%);padding:32px;border:1px solid #284b32;border-radius:24px;background:#0d1812;box-shadow:0 24px 60px rgba(0,0,0,.35)}h1{font-size:clamp(2rem,6vw,3.4rem);margin:0 0 10px}p{color:#a7bdac;line-height:1.6}.btn{display:inline-block;margin-top:14px;padding:12px 16px;border-radius:14px;background:#79d68b;color:#07100b;text-decoration:none;font-weight:900}</style></head><body><div class="card"><h1>PXG Hardcore 🌿</h1><p>A home já está publicada. Agora vamos migrar o dashboard completo do PXG para esta área, sem perder a estrutura que já montamos.</p><a class="btn" href="../">← Voltar para a home</a></div></body></html>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#07140d">
+<title>PXG • Jornada do Gui</title>
+<style>
+:root{--bg:#07140d;--panel:#10251a;--line:#315343;--text:#f4faef;--muted:#aec4b1;--lime:#a3e27e;--gold:#f6d58b}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:var(--text);background:radial-gradient(ellipse 55% 38% at 14% 0%,#285b32 0%,transparent 100%),radial-gradient(ellipse 45% 45% at 100% 55%,#153b29 0%,transparent 100%),var(--bg)}
+a{color:inherit}.page{width:min(1100px,100%);margin:auto;padding:25px clamp(16px,4vw,44px) 56px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:34px}.back{color:#cde4cf;text-decoration:none;font-size:.91rem}.back:hover{text-decoration:underline}.eyebrow{text-transform:uppercase;letter-spacing:.16em;color:var(--lime);font-size:.71rem;font-weight:800}
+.intro h1{font-size:clamp(2rem,5vw,3.5rem);letter-spacing:-.05em;margin:8px 0}.intro p{color:var(--muted);margin:0 0 28px;line-height:1.5}
+.profile{position:relative;overflow:hidden;max-width:820px;border:1px solid #4b7357;border-radius:28px;background:linear-gradient(135deg,rgba(33,75,45,.96),rgba(13,34,25,.99) 62%);box-shadow:0 28px 75px #0006}
+.profile:before{content:"";position:absolute;width:400px;height:400px;border-radius:50%;right:-150px;top:-190px;background:radial-gradient(circle,#7fbb6650,transparent 67%);pointer-events:none}
+.profile-head{position:relative;display:grid;grid-template-columns:150px 1fr;align-items:center;gap:28px;padding:32px 36px 25px}
+.avatar{width:150px;height:150px;border-radius:22px;background:linear-gradient(145deg,#326347,#143325);border:2px solid #94cd8c77;display:grid;place-items:center;overflow:hidden;color:#c8e6bd;font-size:4.4rem;font-weight:800;box-shadow:0 12px 24px #0004}
+.avatar img,.team-photo img{width:100%;height:100%;object-fit:cover;display:block}.avatar:has(img){background:#183525}
+.name-label{font-size:.72rem;color:var(--lime);font-weight:800;letter-spacing:.16em;text-transform:uppercase}.character-name{font-size:clamp(2rem,5vw,3.4rem);line-height:1.05;letter-spacing:-.05em;margin:7px 0 18px}
+.stats{display:flex;flex-wrap:wrap;gap:10px}.stat{min-width:125px;padding:10px 15px;border:1px solid #71916d72;border-radius:13px;background:#071b1180}.stat-label{display:block;color:#b5cbb8;font-size:.73rem;margin-bottom:3px}.stat-value{display:block;font-size:1.17rem;font-weight:800;color:#fff}.stat.money .stat-value{color:var(--gold)}
+.team-section{position:relative;margin:0 36px 32px;padding-top:22px;border-top:1px solid #7d9e7d55}.team-heading{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:14px}.team-heading h2{font-size:1rem;margin:0}.team-heading span{color:#aec7ae;font-size:.77rem}
+.team-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.team-photo{height:clamp(104px,15vw,160px);display:grid;place-items:center;overflow:hidden;border:1px solid #77947b66;border-radius:16px;background:radial-gradient(circle at 50% 28%,#3b7556,#193927 72%);color:#bad0b9;font-size:2rem}
+.team-photo.empty:after{content:"+";font-weight:300;opacity:.55}.team-photo img{object-fit:contain;padding:6px}
+.edit{max-width:820px;margin-top:18px;border:1px solid #3b654b;border-radius:20px;background:#10241a}
+.edit summary{padding:17px 20px;cursor:pointer;font-weight:700;color:#d6f4cf}.edit summary:hover{color:#fff}
+.editor{padding:0 20px 21px;display:grid;gap:15px}.fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+label{display:grid;gap:7px;color:#c3d8c4;font-size:.83rem;font-weight:650}input{width:100%;min-width:0;border:1px solid #507259;border-radius:10px;background:#07170e;color:#fff;padding:10px 11px;font:inherit}input[type=file]{padding:9px;font-size:.75rem}input:focus-visible,summary:focus-visible{outline:2px solid var(--lime);outline-offset:2px}
+.uploads{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}.upload-note,.save-note{color:#a8c2aa;font-size:.78rem;line-height:1.5;margin:0}.save-note{min-height:1.2em}
+@media(max-width:620px){.profile-head{grid-template-columns:100px 1fr;gap:17px;padding:22px 20px}.avatar{width:100px;height:100px;border-radius:17px;font-size:3rem}.character-name{margin-bottom:12px}.stat{min-width:100px;padding:8px 10px}.team-section{margin:0 20px 22px}.team-grid{gap:8px}.team-photo{height:clamp(85px,25vw,125px)}.fields,.uploads{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:400px){.profile-head{grid-template-columns:76px 1fr;gap:12px}.avatar{width:76px;height:76px}.stat{min-width:80px}.stat-value{font-size:1rem}.team-photo{height:84px}}
+</style>
+</head>
+<body>
+<main class="page">
+  <nav class="top"><a class="back" href="../">← Voltar à home</a><span class="eyebrow">PXG • Naturia</span></nav>
+  <header class="intro"><span class="eyebrow">Jornada hardcore</span><h1>Visão geral</h1><p>Seu personagem e seu time, em um só cartão.</p></header>
+  <article class="profile" aria-label="Cartão do personagem">
+    <div class="profile-head">
+      <div class="avatar" id="avatar" aria-label="Foto do personagem">G</div>
+      <div><span class="name-label">Treinador</span><h2 class="character-name" id="display-name">Gui</h2>
+        <div class="stats">
+          <div class="stat"><span class="stat-label">Nível</span><span class="stat-value" id="display-level">—</span></div>
+          <div class="stat money"><span class="stat-label">Dinheiro</span><span class="stat-value" id="display-money">—</span></div>
+        </div>
+      </div>
+    </div>
+    <section class="team-section" aria-label="Time resumido">
+      <div class="team-heading"><h2>Meu time</h2><span>3 colunas · 2 linhas</span></div>
+      <div class="team-grid" id="team-grid"></div>
+    </section>
+  </article>
+  <details class="edit"><summary>Editar meu cartão</summary>
+    <div class="editor">
+      <div class="fields">
+        <label>Nome<input id="name-input" maxlength="35" value="Gui"></label>
+        <label>Nível<input id="level-input" inputmode="numeric" maxlength="8" placeholder="Ex.: 60"></label>
+        <label>Dinheiro<input id="money-input" maxlength="20" placeholder="Ex.: 10k"></label>
+      </div>
+      <label>Foto do personagem<input id="avatar-input" type="file" accept="image/*"></label>
+      <p class="upload-note">Adicione as seis fotos do time. Os nomes servem para identificar cada foto ao editar; no cartão aparecem apenas as imagens.</p>
+      <div class="uploads" id="team-uploads"></div>
+      <p class="save-note" id="save-note" role="status">As alterações ficam salvas neste dispositivo.</p>
+    </div>
+  </details>
+</main>
+<script>
+(() => {
+  const key = 'pxg-profile-v1';
+  const blank = () => ({name:'Gui',level:'',money:'',avatar:'',team:Array.from({length:6},()=>({name:'',image:''}))});
+  let data = blank();
+  try {
+    const saved = JSON.parse(localStorage.getItem(key));
+    if (saved && typeof saved === 'object') {
+      data = {...data,...saved,team:Array.from({length:6},(_,i)=>({name:saved.team?.[i]?.name || '',image:saved.team?.[i]?.image || ''}))};
+    }
+  } catch (_) {}
+  const $ = id => document.getElementById(id);
+  const fields = {name:$('name-input'),level:$('level-input'),money:$('money-input')};
+  const grid = $('team-grid'), uploads = $('team-uploads'), note = $('save-note');
+  function save() {
+    try { localStorage.setItem(key,JSON.stringify(data)); note.textContent='Alterações salvas neste dispositivo.'; }
+    catch (_) { note.textContent='Não foi possível salvar as fotos neste dispositivo. Tente imagens menores.'; }
+  }
+  function picture(container,src,alt) {
+    container.replaceChildren();
+    container.classList.toggle('empty',!src);
+    if (src) { const img=document.createElement('img'); img.src=src; img.alt=alt; container.append(img); }
+    else if (container.id === 'avatar') container.textContent=(data.name || 'G').trim().charAt(0).toUpperCase();
+  }
+  function render() {
+    $('display-name').textContent=data.name.trim() || 'Gui';
+    $('display-level').textContent=data.level.trim() || '—';
+    $('display-money').textContent=data.money.trim() || '—';
+    picture($('avatar'),data.avatar,'Personagem de '+(data.name || 'Gui'));
+    [...grid.children].forEach((slot,i)=>{slot.setAttribute('aria-label',data.team[i].name || 'Pokémon '+(i+1));picture(slot,data.team[i].image,data.team[i].name || 'Pokémon '+(i+1));});
+  }
+  for (let i=0;i<6;i++) {
+    const slot=document.createElement('div'); slot.className='team-photo empty'; grid.append(slot);
+    const box=document.createElement('div');
+    const nameLabel=document.createElement('label'); nameLabel.textContent='Pokémon '+(i+1);
+    const nameInput=document.createElement('input'); nameInput.maxLength=35; nameInput.placeholder='Nome (opcional)'; nameInput.value=data.team[i].name;
+    nameInput.addEventListener('input',()=>{data.team[i].name=nameInput.value;render();save();});
+    nameLabel.append(nameInput);
+    const imageLabel=document.createElement('label'); imageLabel.textContent='Foto';
+    const imageInput=document.createElement('input'); imageInput.type='file'; imageInput.accept='image/*';
+    imageInput.addEventListener('change',()=>loadImage(imageInput.files?.[0],src=>{data.team[i].image=src;render();save();}));
+    imageLabel.append(imageInput); box.append(nameLabel,imageLabel); uploads.append(box);
+  }
+  Object.entries(fields).forEach(([name,input])=>{
+    input.value=data[name] || '';
+    input.addEventListener('input',()=>{data[name]=input.value;render();save();});
+  });
+  $('avatar-input').addEventListener('change',event=>loadImage(event.target.files?.[0],src=>{data.avatar=src;render();save();}));
+  function loadImage(file,done) {
+    if (!file) return;
+    if (!file.type.startsWith('image/')) {note.textContent='Selecione uma imagem.';return;}
+    const url=URL.createObjectURL(file),img=new Image();
+    img.onload=()=>{
+      const scale=Math.min(1,480/Math.max(img.width,img.height));
+      const canvas=document.createElement('canvas');canvas.width=Math.round(img.width*scale);canvas.height=Math.round(img.height*scale);
+      canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height);
+      URL.revokeObjectURL(url);done(canvas.toDataURL('image/webp',.78));
+    };
+    img.onerror=()=>{URL.revokeObjectURL(url);note.textContent='Não consegui abrir essa imagem.';};
+    img.src=url;
+  }
+  render();
+})();
+</script>
+</body></html>
