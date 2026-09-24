@@ -42,9 +42,12 @@ h1 span{display:block;margin-top:8px;color:var(--blue)}
 .pstory-description{max-width:245px;font-size:clamp(.8rem,1.45vw,1rem);line-height:1.5;text-shadow:0 1px 8px #08375b}
 .pstory-action{margin-top:18px;padding:11px 18px;border-radius:999px;background:#1686df;color:white;font-size:clamp(.8rem,1.3vw,.95rem);font-weight:700;box-shadow:0 6px 18px #083e73aa}
 @media(max-width:520px){.pstory-copy{width:68%;padding:20px}.pstory-description{font-size:.8rem}.pstory-action{margin-top:12px;padding:9px 13px}}
-.card:hover{transform:translateY(-8px) scale(1.018);box-shadow:0 36px 72px rgba(35,67,98,.24)}
-.chooser:hover .card:not(:hover){filter:saturate(.78) brightness(.9)}
-.card:focus-visible{outline:4px solid rgba(30,136,229,.28);outline-offset:4px}
+@media(hover:hover) and (pointer:fine){
+  .card:hover{z-index:2;transform:translateY(-10px) scale(1.055);box-shadow:0 38px 80px rgba(35,67,98,.3)}
+  .chooser:has(.card:hover) .card:not(:hover){filter:saturate(.48) brightness(.64);transform:scale(.985)}
+}
+.card:focus-visible{z-index:2;outline:4px solid rgba(30,136,229,.28);outline-offset:4px}
+.chooser:has(.card:focus-visible) .card:not(:focus-visible){filter:saturate(.55) brightness(.72)}
 .arrows{display:flex;flex-direction:column;align-items:center;gap:8px;color:#66788c;font-size:30px;user-select:none}
 .arrows span:last-child{color:#1686ff}
 .features{margin:28px auto 0;width:min(940px,100%);display:grid;grid-template-columns:repeat(4,1fr);background:rgba(255,255,255,.72);border:1px solid var(--line);border-radius:18px;box-shadow:0 10px 28px rgba(30,60,90,.06);backdrop-filter:blur(12px)}
