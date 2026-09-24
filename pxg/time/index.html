@@ -11,7 +11,7 @@ button,input,select{font:inherit}button{cursor:pointer}.page{width:min(1100px,10
 .team-grid{max-width:900px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 .pokemon-card{position:relative;min-height:205px;display:flex;align-items:center;gap:22px;width:100%;padding:19px 23px;text-align:left;color:var(--text);border:1px solid #4a7551;border-radius:22px;background:linear-gradient(125deg,#173b25,#0f261a 75%);box-shadow:0 17px 35px #0004;transition:transform .22s,box-shadow .22s,border-color .22s}
 .pokemon-card:hover{transform:translateY(-5px);border-color:#a4db8d;box-shadow:0 25px 45px #0006}.pokemon-card:focus-visible,.close:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--lime);outline-offset:3px}
-.pokemon-art{width:160px;height:160px;flex:none;display:grid;place-items:center;border-radius:18px;background:radial-gradient(circle,#477351,#234531 65%,#193c2a);overflow:hidden}.pokemon-art img{width:100%;height:100%;object-fit:contain;padding:9px}.pokemon-info{min-width:0}.pokemon-info strong{display:block;font-size:clamp(1.28rem,3vw,1.8rem);letter-spacing:-.03em}.pokemon-info small{display:block;margin-top:7px;color:#abd0ad}.types{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:12px}.type{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1px solid #ffffff38;border-radius:99px;min-width:34px;min-height:34px;padding:5px 9px;background:#ffffff16;font-weight:700;font-size:.82rem}.type-icon{font-size:1.13rem;line-height:1}.type.grass{background:#33875966}.type.poison{background:#9f66bc55}.type.fire{background:#cf663c66}.type.normal{background:#9c9d9266}
+.pokemon-art{width:160px;height:160px;flex:none;display:grid;place-items:center;border-radius:18px;background:radial-gradient(circle,#477351,#234531 65%,#193c2a);overflow:hidden}.pokemon-art img{width:100%;height:100%;object-fit:contain;padding:9px}.pokemon-info{min-width:0}.pokemon-info strong{display:block;font-size:clamp(1.28rem,3vw,1.8rem);letter-spacing:-.03em}.pokemon-info small{display:block;margin-top:7px;color:#abd0ad}.types{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:12px}.type{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1px solid #ffffff38;border-radius:99px;min-width:34px;min-height:34px;padding:5px 9px;background:#ffffff16;font-weight:700;font-size:.82rem}.type-icon{font-size:1.13rem;line-height:1;display:inline-flex;align-items:center}.type-icon svg{width:20px;height:20px;display:block}.type.grass{background:#33875966}.type.poison{background:#9f66bc55}.type.fire{background:#cf663c66}.type.normal{background:#9c9d9266}
 .pokemon-card.empty{border-style:dashed;box-shadow:none;min-height:205px}.pokemon-card.empty .pokemon-art{font-size:3rem;color:#acc8aa}.pokemon-card.empty .pokemon-info strong{color:#d0dfcb}
 dialog{width:min(760px,calc(100% - 24px));max-height:min(90vh,950px);padding:0;color:var(--text);border:1px solid #649371;border-radius:24px;background:#10251a;box-shadow:0 35px 90px #000a;overflow:auto}dialog::backdrop{background:#020b07c9;backdrop-filter:blur(5px)}
 .modal-inner{padding:clamp(20px,4vw,34px)}.modal-top{display:flex;align-items:flex-start;justify-content:space-between;gap:18px}.modal-top h2{font-size:clamp(1.8rem,5vw,2.5rem);letter-spacing:-.04em;margin:5px 0 0}.close{width:37px;height:37px;flex:none;border:1px solid #52735d;border-radius:50%;background:#23412e;color:#fff;font-size:1.3rem}
@@ -63,7 +63,7 @@ dialog{width:min(760px,calc(100% - 24px));max-height:min(90vh,950px);padding:0;c
   const types={
     grass:{label:'Planta',icon:'🌿'},poison:{label:'Venenoso',icon:'☠'},normal:{label:'Normal',icon:'✦'},
     fire:{label:'Fogo',icon:'🔥'},water:{label:'Água',icon:'💧'},electric:{label:'Elétrico',icon:'⚡'},
-    ground:{label:'Terrestre',icon:'◆'},rock:{label:'Pedra',icon:'⬟'},flying:{label:'Voador',icon:'🪽'},
+    ground:{label:'Terrestre',icon:'◆'},rock:{label:'Pedra',icon:'⬟'},flying:{label:'Voador',icon:'feather'},
     psychic:{label:'Psíquico',icon:'◉'},bug:{label:'Inseto',icon:'⬡'},ghost:{label:'Fantasma',icon:'◈'},
     ice:{label:'Gelo',icon:'❄'},dragon:{label:'Dragão',icon:'◇'},steel:{label:'Metal',icon:'⚙'},
     dark:{label:'Sombrio',icon:'☾'},fighting:{label:'Lutador',icon:'✊'},fairy:{label:'Fada',icon:'✧'}
@@ -103,7 +103,13 @@ dialog{width:min(760px,calc(100% - 24px));max-height:min(90vh,950px);padding:0;c
   function icon(type,withLabel=false){
     const info=types[type];if(!info)return null;
     const badge=document.createElement('span');badge.className='type '+type;badge.title=info.label;badge.setAttribute('aria-label',info.label);
-    const symbol=document.createElement('span');symbol.className='type-icon';symbol.textContent=info.icon;symbol.setAttribute('aria-hidden','true');badge.append(symbol);
+    const symbol=document.createElement('span');symbol.className='type-icon';symbol.setAttribute('aria-hidden','true');
+    if(type==='flying'){
+      const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','0 0 24 24');svg.setAttribute('fill','none');svg.setAttribute('stroke','currentColor');svg.setAttribute('stroke-width','1.8');svg.setAttribute('stroke-linecap','round');svg.setAttribute('stroke-linejoin','round');
+      const feather=document.createElementNS('http://www.w3.org/2000/svg','path');feather.setAttribute('d','M4 20c2-6 6-13 12-16 2-1 4-1 5-1 0 3-1 6-3 8-4 5-9 7-14 9Z M4 20c4-5 8-8 14-12 M8 15l-1-5 M12 12l-1-5');
+      svg.append(feather);symbol.append(svg);
+    }else symbol.textContent=info.icon;
+    badge.append(symbol);
     if(withLabel){const name=document.createElement('span');name.textContent=info.label;badge.append(name)}
     return badge;
   }
