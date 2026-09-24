@@ -60,7 +60,7 @@ label{display:grid;gap:7px;color:#c3d8c4;font-size:.83rem;font-weight:650}input{
     <div class="goals-top"><h2 id="goals-title">Próximos objetivos</h2><a class="goals-link" href="./objetivos/">Ver todos os objetivos →</a></div>
     <div class="goal-list">
       <article class="goal"><span class="goal-icon" aria-hidden="true">✦</span><h3 id="level-goal-title">Chegar ao nível 50</h3><p>O próximo marco do personagem.</p><div class="goal-progress" aria-hidden="true"><span id="level-bar"></span></div><span class="goal-count" id="level-goal">39 / 50</span></article>
-      <article class="goal"><span class="goal-icon" aria-hidden="true">🌿</span><h3>Evoluir o Gloom</h3><p>Preparar a próxima evolução do time.</p><span class="goal-count" id="gloom-goal">Planejado</span></article>
+      <article class="goal"><span class="goal-icon" aria-hidden="true">✧</span><h3>Conseguir um Shiny</h3><p>Qualquer um, exceto a Shiny Plume.</p><span class="goal-count" id="shiny-goal">Pendente</span></article>
       <article class="goal"><span class="goal-icon" aria-hidden="true">◈</span><h3>Completar o time</h3><p>Preencher os seis espaços do cartão.</p><div class="goal-progress" aria-hidden="true"><span id="team-bar"></span></div><span class="goal-count" id="team-goal">3 / 6 Pokémon</span></article>
     </div>
   </section>
@@ -129,7 +129,7 @@ label{display:grid;gap:7px;color:#c3d8c4;font-size:.83rem;font-weight:650}input{
     $('team-goal').textContent=count+' / 6 Pokémon';
     $('level-bar').style.width=Math.min(100,level/nextLevel*100)+'%';
     $('team-bar').style.width=Math.min(100,count/6*100)+'%';
-    try{$('gloom-goal').textContent=localStorage.getItem('pxg-gloom-evolved-v1')==='true'?'Concluído':'Planejado'}catch(_){}
+    try{$('shiny-goal').textContent=JSON.parse(localStorage.getItem('pxg-goals-status-v1'))?.otherShiny?'Concluído':'Pendente'}catch(_){}
   }
   for (let i=0;i<6;i++) {
     const slot=document.createElement('div'); slot.className='team-photo empty'; grid.append(slot);

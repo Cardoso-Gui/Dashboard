@@ -28,9 +28,8 @@ section{margin-top:35px}section h2{font-size:1.45rem;letter-spacing:-.03em;margi
   const $=id=>document.getElementById(id);
   let profile={level:'39',fishing:'50',money:'',team:[{name:'Gloom'},{name:'Ditto'},{name:'Cyndaquil'}]};
   try{const saved=JSON.parse(localStorage.getItem('pxg-profile-v1'));if(saved&&typeof saved==='object')profile={...profile,...saved}}catch(_){}
-  let flags={vip:false,clan:false,profession:false,gloom:false};
+  let flags={vip:false,clan:false,profession:false,shinyPlume:false,otherShiny:false};
   try{flags={...flags,...JSON.parse(localStorage.getItem('pxg-goals-status-v1'))}}catch(_){}
-  try{if(localStorage.getItem('pxg-gloom-evolved-v1')==='true')flags.gloom=true}catch(_){}
   function moneyValue(raw){
     const text=String(raw||'').trim().toUpperCase();
     let clean=text.replace(/[^\d,.-]/g,'');
@@ -52,17 +51,20 @@ section{margin-top:35px}section h2{font-size:1.45rem;letter-spacing:-.03em;margi
       {name:'Diversos',items:[
         {label:'Concluir o tutorial',done:true},
         {label:'Evoluir Baby Cyndaquil',done:true},
-        {label:'Evoluir o Gloom',done:flags.gloom,id:'gloom'},
+        {label:'Comprar Ultra Bag',done:true},
+        {label:'Comprar Vault',done:true},
         {label:'Completar o time (6 Pokémon)',done:teamCount>=6},
         {label:'Farmar VIP',done:flags.vip,id:'vip'},
         {label:'Entrar em clã',done:flags.clan,id:'clan'},
-        {label:'Escolher profissão',done:flags.profession,id:'profession'}
+        {label:'Escolher profissão',done:flags.profession,id:'profession'},
+        {label:'Conseguir um Shiny (exceto Shiny Plume)',done:flags.otherShiny,id:'otherShiny'},
+        {label:'Conseguir Shiny Vileplume',done:flags.shinyPlume,id:'shinyPlume'}
       ]}
     ];
   }
   function saveFlag(id,value){
     flags[id]=value;
-    try{localStorage.setItem('pxg-goals-status-v1',JSON.stringify(flags));if(id==='gloom')localStorage.setItem('pxg-gloom-evolved-v1',String(value))}catch(_){}
+    try{localStorage.setItem('pxg-goals-status-v1',JSON.stringify(flags))}catch(_){}
     render();
   }
   function panel(group,done){
