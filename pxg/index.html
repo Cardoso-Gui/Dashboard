@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#07140d">
-<title>PXG • Jornada do Gui</title>
+<title>PXG • Texugo do Mel</title>
 <style>
 :root{--bg:#07140d;--panel:#10251a;--line:#315343;--text:#f4faef;--muted:#aec4b1;--lime:#a3e27e;--gold:#f6d58b}
 *{box-sizing:border-box}
@@ -38,8 +38,8 @@ label{display:grid;gap:7px;color:#c3d8c4;font-size:.83rem;font-weight:650}input{
   <header class="intro"><span class="eyebrow">Jornada hardcore</span><h1>Visão geral</h1><p>Seu personagem e seu time, em um só cartão.</p></header>
   <article class="profile" aria-label="Cartão do personagem">
     <div class="profile-head">
-      <div class="avatar" id="avatar" aria-label="Foto do personagem">G</div>
-      <div><span class="name-label">Treinador</span><h2 class="character-name" id="display-name">Gui</h2>
+      <div class="avatar" id="avatar" aria-label="Foto do personagem"><img src="../assets/texugo-do-mel.webp" alt="Treinador Texugo do Mel"></div>
+      <div><span class="name-label">Treinador</span><h2 class="character-name" id="display-name">Texugo do Mel</h2>
         <div class="stats">
           <div class="stat"><span class="stat-label">Nível</span><span class="stat-value" id="display-level">39</span></div>
           <div class="stat"><span class="stat-label">Pesca</span><span class="stat-value" id="display-fishing">50</span></div>
@@ -55,7 +55,7 @@ label{display:grid;gap:7px;color:#c3d8c4;font-size:.83rem;font-weight:650}input{
   <details class="edit"><summary>Editar meu cartão</summary>
     <div class="editor">
       <div class="fields">
-        <label>Nome<input id="name-input" maxlength="35" value="Gui"></label>
+        <label>Nome<input id="name-input" maxlength="35" value="Texugo do Mel"></label>
         <label>Nível<input id="level-input" inputmode="numeric" maxlength="8" placeholder="Ex.: 60"></label>
         <label>Nível de pesca<input id="fishing-input" inputmode="numeric" maxlength="8" placeholder="Ex.: 25"></label>
         <label>Dinheiro<input id="money-input" maxlength="20" placeholder="Ex.: 10k"></label>
@@ -70,7 +70,7 @@ label{display:grid;gap:7px;color:#c3d8c4;font-size:.83rem;font-weight:650}input{
 <script>
 (() => {
   const key = 'pxg-profile-v1';
-  const blank = () => ({name:'Gui',level:'39',fishing:'50',money:'',avatar:'',team:[
+  const blank = () => ({name:'Texugo do Mel',level:'39',fishing:'50',money:'',avatar:'../assets/texugo-do-mel.webp',team:[
     {name:'Gloom',image:'../assets/pokemon/gloom.png'},
     {name:'Ditto',image:'../assets/pokemon/ditto.png'},
     {name:'Cyndaquil',image:'../assets/pokemon/cyndaquil.png'},
@@ -80,7 +80,8 @@ label{display:grid;gap:7px;color:#c3d8c4;font-size:.83rem;font-weight:650}input{
   try {
     const saved = JSON.parse(localStorage.getItem(key));
     if (saved && typeof saved === 'object') {
-      data = {...data,...saved,level:saved.level || data.level,fishing:saved.fishing || data.fishing,
+      data = {...data,...saved,name:!saved.name || saved.name === 'Gui' ? data.name : saved.name,
+        avatar:saved.avatar || data.avatar,level:saved.level || data.level,fishing:saved.fishing || data.fishing,
         team:data.team.map((slot,i)=>({
           name:saved.team?.[i]?.name || slot.name,
           image:saved.team?.[i]?.image || slot.image
@@ -98,14 +99,14 @@ label{display:grid;gap:7px;color:#c3d8c4;font-size:.83rem;font-weight:650}input{
     container.replaceChildren();
     container.classList.toggle('empty',!src);
     if (src) { const img=document.createElement('img'); img.src=src; img.alt=alt; container.append(img); }
-    else if (container.id === 'avatar') container.textContent=(data.name || 'G').trim().charAt(0).toUpperCase();
+    else if (container.id === 'avatar') container.textContent=(data.name || 'T').trim().charAt(0).toUpperCase();
   }
   function render() {
-    $('display-name').textContent=data.name.trim() || 'Gui';
+    $('display-name').textContent=data.name.trim() || 'Texugo do Mel';
     $('display-level').textContent=data.level.trim() || '—';
     $('display-fishing').textContent=data.fishing.trim() || '—';
     $('display-money').textContent=data.money.trim() || '—';
-    picture($('avatar'),data.avatar,'Personagem de '+(data.name || 'Gui'));
+    picture($('avatar'),data.avatar,'Personagem de '+(data.name || 'Texugo do Mel'));
     [...grid.children].forEach((slot,i)=>{slot.setAttribute('aria-label',data.team[i].name || 'Pokémon '+(i+1));picture(slot,data.team[i].image,data.team[i].name || 'Pokémon '+(i+1));});
   }
   for (let i=0;i<6;i++) {
