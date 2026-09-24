@@ -26,8 +26,10 @@ section{margin-top:35px}section h2{font-size:1.45rem;letter-spacing:-.03em;margi
 <script>
 (() => {
   const $=id=>document.getElementById(id);
-  let profile={level:'39',fishing:'50',money:'',team:[{name:'Gloom'},{name:'Ditto'},{name:'Cyndaquil'}]};
+  let profile={level:'40',fishing:'50',money:'',team:[{name:'Gloom'},{name:'Ditto'},{name:'Quilava'}]};
   try{const saved=JSON.parse(localStorage.getItem('pxg-profile-v1'));if(saved&&typeof saved==='object')profile={...profile,...saved}}catch(_){}
+  if((Number.parseInt(profile.level,10)||0)<40)profile.level='40';
+  if(profile.team?.[2]?.name?.trim().toLowerCase()==='cyndaquil')profile.team[2].name='Quilava';
   let flags={vip:false,clan:false,profession:false,shinyPlume:false,otherShiny:false};
   try{flags={...flags,...JSON.parse(localStorage.getItem('pxg-goals-status-v1'))}}catch(_){}
   function moneyValue(raw){
@@ -51,6 +53,7 @@ section{margin-top:35px}section h2{font-size:1.45rem;letter-spacing:-.03em;margi
       {name:'Diversos',items:[
         {label:'Concluir o tutorial',done:true},
         {label:'Evoluir Baby Cyndaquil',done:true},
+        {label:'Evoluir Cyndaquil para Quilava',done:true},
         {label:'Comprar Ultra Bag',done:true},
         {label:'Comprar Vault',done:true},
         {label:'Completar o time (6 Pokémon)',done:teamCount>=6},
