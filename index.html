@@ -20,9 +20,9 @@ h1{font-size:clamp(2.4rem,6vw,4.6rem);line-height:.98;margin:0;letter-spacing:-.
 h1 span{display:block;margin-top:8px;color:var(--blue)}
 .subtitle{max-width:760px;margin:18px auto 0;color:var(--muted);font-size:clamp(.95rem,2vw,1.12rem);line-height:1.6}
 .chooser{margin-top:34px;display:grid;grid-template-columns:minmax(0,1fr) 74px minmax(0,1fr);gap:18px;align-items:center}
-.card{position:relative;display:block;width:100%;aspect-ratio:580/405;border-radius:28px;overflow:hidden;background-image:url('assets/cards-sprite.webp');background-repeat:no-repeat;background-size:200% 100%;box-shadow:0 24px 55px rgba(35,67,98,.16);transition:.32s ease;border:1px solid rgba(15,35,58,.06)}
-.card.pxg{background-position:left center}
-.card.pstory{background-position:right center}
+.card{position:relative;display:block;width:100%;aspect-ratio:580/405;border-radius:28px;overflow:hidden;background-repeat:no-repeat;background-size:cover;background-position:center;box-shadow:0 24px 55px rgba(35,67,98,.16);transition:.32s ease;border:1px solid rgba(15,35,58,.06)}
+.card.pxg{background-image:url('assets/pxg-card.webp')}
+.card.pstory{background-image:url('assets/pstory-card.webp')}
 .card:hover{transform:translateY(-8px) scale(1.018);box-shadow:0 36px 72px rgba(35,67,98,.24)}
 .chooser:hover .card:not(:hover){filter:saturate(.78) brightness(.9)}
 .card:focus-visible{outline:4px solid rgba(30,136,229,.28);outline-offset:4px}
