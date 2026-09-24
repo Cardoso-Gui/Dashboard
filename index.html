@@ -29,7 +29,14 @@ h1 span{display:block;margin-top:8px;color:var(--blue)}
 .pxg-description{max-width:240px;font-size:clamp(.8rem,1.45vw,1rem);line-height:1.5;text-shadow:0 1px 8px #092016}
 .pxg-action{margin-top:18px;padding:11px 18px;border-radius:999px;background:#0eac69;color:white;font-size:clamp(.8rem,1.3vw,.95rem);font-weight:700;box-shadow:0 6px 18px #062b21aa}
 @media(max-width:520px){.pxg-copy{width:68%;padding:20px}.pxg-description{font-size:.8rem}.pxg-action{margin-top:12px;padding:9px 13px}}
-.card.pstory{background-image:url('assets/pstory-card.webp')}
+.card.pstory{background-image:url('assets/pstory-card-v2.webp')}
+.card.pstory::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,54,106,.88) 0%,rgba(5,75,132,.65) 31%,rgba(6,84,140,.12) 66%,transparent 100%)}
+.pstory-copy{position:absolute;z-index:1;inset:0 auto 0 0;width:60%;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:clamp(18px,3vw,38px);color:#fff;text-align:left}
+.pstory-mark{font-size:clamp(2.5rem,5vw,5rem);font-weight:850;line-height:1;letter-spacing:-.06em}
+.pstory-rule{width:42px;height:3px;margin:12px 0 14px;border-radius:3px;background:#7ad9ff}
+.pstory-description{max-width:245px;font-size:clamp(.8rem,1.45vw,1rem);line-height:1.5;text-shadow:0 1px 8px #08375b}
+.pstory-action{margin-top:18px;padding:11px 18px;border-radius:999px;background:#1686df;color:white;font-size:clamp(.8rem,1.3vw,.95rem);font-weight:700;box-shadow:0 6px 18px #083e73aa}
+@media(max-width:520px){.pstory-copy{width:68%;padding:20px}.pstory-description{font-size:.8rem}.pstory-action{margin-top:12px;padding:9px 13px}}
 .card:hover{transform:translateY(-8px) scale(1.018);box-shadow:0 36px 72px rgba(35,67,98,.24)}
 .chooser:hover .card:not(:hover){filter:saturate(.78) brightness(.9)}
 .card:focus-visible{outline:4px solid rgba(30,136,229,.28);outline-offset:4px}
@@ -58,7 +65,7 @@ h1 span{display:block;margin-top:8px;color:var(--blue)}
   <section class="chooser" aria-label="Escolha o dashboard">
     <a class="card pxg" href="./pxg/" aria-label="Acessar dashboard PXG"><span class="pxg-copy"><span class="pxg-mark">PXG</span><span class="pxg-rule"></span><span class="pxg-description">Uma jornada hardcore em um mundo repleto de desafios, exploração e conquista.</span><span class="pxg-action">Acessar PXG →</span></span></a>
     <div class="arrows" aria-hidden="true"><span>←</span><span>→</span></div>
-    <a class="card pstory" href="./pstory/" aria-label="Acessar dashboard PStory"></a>
+    <a class="card pstory" href="./pstory/" aria-label="Acessar dashboard PStory"><span class="pstory-copy"><span class="pstory-mark">PStory</span><span class="pstory-rule"></span><span class="pstory-description">Uma experiência leve e divertida em um mundo cheio de amizades, aventuras e novas histórias.</span><span class="pstory-action">Acessar PStory →</span></span></a>
   </section>
 
   <section class="features">
