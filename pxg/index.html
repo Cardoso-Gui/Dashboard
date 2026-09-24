@@ -41,8 +41,8 @@ label{display:grid;gap:7px;color:#c3d8c4;font-size:.83rem;font-weight:650}input{
       <div class="avatar" id="avatar" aria-label="Foto do personagem">G</div>
       <div><span class="name-label">Treinador</span><h2 class="character-name" id="display-name">Gui</h2>
         <div class="stats">
-          <div class="stat"><span class="stat-label">Nível</span><span class="stat-value" id="display-level">—</span></div>
-          <div class="stat"><span class="stat-label">Pesca</span><span class="stat-value" id="display-fishing">—</span></div>
+          <div class="stat"><span class="stat-label">Nível</span><span class="stat-value" id="display-level">39</span></div>
+          <div class="stat"><span class="stat-label">Pesca</span><span class="stat-value" id="display-fishing">50</span></div>
           <div class="stat money"><span class="stat-label">Dinheiro</span><span class="stat-value" id="display-money">—</span></div>
         </div>
       </div>
@@ -70,12 +70,21 @@ label{display:grid;gap:7px;color:#c3d8c4;font-size:.83rem;font-weight:650}input{
 <script>
 (() => {
   const key = 'pxg-profile-v1';
-  const blank = () => ({name:'Gui',level:'',fishing:'',money:'',avatar:'',team:Array.from({length:6},()=>({name:'',image:''}))});
+  const blank = () => ({name:'Gui',level:'39',fishing:'50',money:'',avatar:'',team:[
+    {name:'Gloom',image:'../assets/pokemon/gloom.png'},
+    {name:'Ditto',image:'../assets/pokemon/ditto.png'},
+    {name:'Cyndaquil',image:'../assets/pokemon/cyndaquil.png'},
+    ...Array.from({length:3},()=>({name:'',image:''}))
+  ]});
   let data = blank();
   try {
     const saved = JSON.parse(localStorage.getItem(key));
     if (saved && typeof saved === 'object') {
-      data = {...data,...saved,team:Array.from({length:6},(_,i)=>({name:saved.team?.[i]?.name || '',image:saved.team?.[i]?.image || ''}))};
+      data = {...data,...saved,level:saved.level || data.level,fishing:saved.fishing || data.fishing,
+        team:data.team.map((slot,i)=>({
+          name:saved.team?.[i]?.name || slot.name,
+          image:saved.team?.[i]?.image || slot.image
+        }))};
     }
   } catch (_) {}
   const $ = id => document.getElementById(id);
