@@ -59,7 +59,7 @@ label{display:grid;gap:7px;color:#c3d8c4;font-size:.83rem;font-weight:650}input{
   <section class="goals" aria-labelledby="goals-title">
     <div class="goals-top"><h2 id="goals-title">Próximos objetivos</h2><a class="goals-link" href="./objetivos/">Ver todos os objetivos →</a></div>
     <div class="goal-list">
-      <article class="goal"><span class="goal-icon" aria-hidden="true">✦</span><h3>Chegar ao nível 60</h3><p>O próximo marco do personagem.</p><div class="goal-progress" aria-hidden="true"><span id="level-bar"></span></div><span class="goal-count" id="level-goal">39 / 60</span></article>
+      <article class="goal"><span class="goal-icon" aria-hidden="true">✦</span><h3 id="level-goal-title">Chegar ao nível 50</h3><p>O próximo marco do personagem.</p><div class="goal-progress" aria-hidden="true"><span id="level-bar"></span></div><span class="goal-count" id="level-goal">39 / 50</span></article>
       <article class="goal"><span class="goal-icon" aria-hidden="true">🌿</span><h3>Evoluir o Gloom</h3><p>Preparar a próxima evolução do time.</p><span class="goal-count" id="gloom-goal">Planejado</span></article>
       <article class="goal"><span class="goal-icon" aria-hidden="true">◈</span><h3>Completar o time</h3><p>Preencher os seis espaços do cartão.</p><div class="goal-progress" aria-hidden="true"><span id="team-bar"></span></div><span class="goal-count" id="team-goal">3 / 6 Pokémon</span></article>
     </div>
@@ -123,9 +123,11 @@ label{display:grid;gap:7px;color:#c3d8c4;font-size:.83rem;font-weight:650}input{
     [...grid.children].forEach((slot,i)=>{slot.setAttribute('aria-label',data.team[i].name || 'Pokémon '+(i+1));picture(slot,data.team[i].image,data.team[i].name || 'Pokémon '+(i+1));});
     const level=Math.max(0,Number.parseInt(data.level,10)||0);
     const count=data.team.filter(member=>member.name.trim() || member.image).length;
-    $('level-goal').textContent=level+' / 60';
+    const nextLevel=[20,30,50,60,80,100,120,150].find(milestone=>milestone>level) || 150;
+    $('level-goal-title').textContent=level>=150?'Nível 150 alcançado':'Chegar ao nível '+nextLevel;
+    $('level-goal').textContent=level+' / '+nextLevel;
     $('team-goal').textContent=count+' / 6 Pokémon';
-    $('level-bar').style.width=Math.min(100,level/60*100)+'%';
+    $('level-bar').style.width=Math.min(100,level/nextLevel*100)+'%';
     $('team-bar').style.width=Math.min(100,count/6*100)+'%';
     try{$('gloom-goal').textContent=localStorage.getItem('pxg-gloom-evolved-v1')==='true'?'Concluído':'Planejado'}catch(_){}
   }

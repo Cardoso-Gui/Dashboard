@@ -8,68 +8,93 @@
 *{box-sizing:border-box}body{margin:0;min-height:100vh;color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:radial-gradient(ellipse 45% 28% at 8% 0%,#275a33,transparent 100%),radial-gradient(ellipse 55% 55% at 95% 70%,#173a26,transparent 100%),#07140d}
 button{font:inherit;cursor:pointer}.page{width:min(1100px,100%);margin:auto;padding:25px clamp(16px,4vw,44px) 65px}
 .back{color:#d4eccc;text-decoration:none;font-size:.91rem}.back:hover{text-decoration:underline}.eyebrow{color:var(--lime);font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em}
-header{margin:34px 0}.head-line{display:flex;align-items:end;justify-content:space-between;gap:15px;flex-wrap:wrap}h1{font-size:clamp(2.2rem,5vw,3.7rem);letter-spacing:-.05em;margin:8px 0}.intro{color:var(--muted);margin:0;line-height:1.5}.summary{color:#d6e9d0;border:1px solid #537a5b;border-radius:99px;padding:9px 15px;font-size:.83rem;background:#1b3c28}
-section{margin-top:34px}section h2{font-size:1.35rem;letter-spacing:-.025em;margin:0 0 7px}.section-sub{color:var(--muted);font-size:.86rem;margin:0 0 16px}
-.active-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.goal{min-height:190px;display:flex;flex-direction:column;padding:20px;border:1px solid #497550;border-radius:21px;background:linear-gradient(145deg,#173b26,#0e2619);box-shadow:0 18px 35px #0004}.goal .mark{font-size:1.3rem}.goal h3{font-size:1.08rem;margin:13px 0 6px}.goal p{color:#acc8ac;font-size:.83rem;margin:0;line-height:1.45}.goal .bottom{margin-top:auto;padding-top:15px}.bar{height:7px;border-radius:99px;background:#3b5d43;overflow:hidden}.bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,#6ac577,#b9eb8d);border-radius:inherit;transition:width .3s}.progress{display:block;color:#d4ead0;font-size:.79rem;font-weight:750;margin-top:8px}.complete-button{margin-top:16px;padding:9px 12px;border:1px solid #86c483;border-radius:10px;background:#275c36;color:#f5fff2;font-size:.78rem;font-weight:750}.complete-button:hover{background:#347444}.complete-button:focus-visible,.back:focus-visible{outline:3px solid var(--lime);outline-offset:3px}
-.groups{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.group{padding:20px;border:1px solid #335c41;border-radius:20px;background:#112a1c}.group h3{font-size:.86rem;letter-spacing:.1em;text-transform:uppercase;color:#b6e2a7;margin:0 0 15px}.group ul{padding:0;margin:0;list-style:none;display:grid;gap:11px}.group li{display:flex;align-items:flex-start;gap:10px;color:#e1efdc;font-size:.89rem;line-height:1.4}.undo{margin-left:auto;border:0;background:transparent;color:#a6d89d;font-size:.77rem;text-decoration:underline}.undo:hover{color:#fff}.undo:focus-visible{outline:2px solid var(--lime);outline-offset:2px}
-.check{display:grid;place-items:center;width:20px;height:20px;flex:none;border-radius:50%;background:#538e58;color:#fff;font-size:.76rem;font-weight:900}
-@media(max-width:730px){.active-grid,.groups{grid-template-columns:1fr}.goal{min-height:165px}.groups{gap:12px}}
-</style>
-</head>
+header{margin:34px 0 39px}.head-line{display:flex;align-items:end;justify-content:space-between;gap:15px;flex-wrap:wrap}h1{font-size:clamp(2.2rem,5vw,3.7rem);letter-spacing:-.05em;margin:8px 0}.intro{color:var(--muted);margin:0;line-height:1.5}.summary{color:#d6e9d0;border:1px solid #537a5b;border-radius:99px;padding:9px 15px;font-size:.83rem;background:#1b3c28}
+section{margin-top:35px}section h2{font-size:1.45rem;letter-spacing:-.03em;margin:0 0 5px}.section-sub{color:var(--muted);font-size:.86rem;margin:0 0 17px}
+.groups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.group{padding:20px;border:1px solid #3d6647;border-radius:20px;background:linear-gradient(145deg,#163523,#10271a)}.group h3{display:flex;align-items:baseline;justify-content:space-between;gap:8px;font-size:1rem;margin:0 0 14px;color:#d3f0c9}.group h3 small{font-size:.75rem;color:#a5c6a4;font-weight:500}.group ul{padding:0;margin:0;list-style:none;display:grid;gap:0}
+.group li{display:flex;align-items:center;gap:11px;min-height:44px;padding:8px 0;border-top:1px solid #54725955;color:#e4f0e0;font-size:.88rem;line-height:1.35}.group li:first-child{border-top:0}.marker{display:grid;place-items:center;width:22px;height:22px;flex:none;border:1px solid #7daa80;border-radius:50%;color:#c5dec1;font-size:.73rem}.done .marker{border:0;background:#518d57;color:white;font-weight:900}.group li span:nth-child(2){min-width:0}.action{margin-left:auto;flex:none;border:1px solid #729b75;background:#245033;color:#e3f7dc;border-radius:9px;padding:6px 9px;font-size:.72rem;font-weight:700}.action:hover{background:#347345}.done .action{background:transparent;border:0;text-decoration:underline;color:#afd6aa}.action:focus-visible,.back:focus-visible{outline:2px solid var(--lime);outline-offset:3px}
+.empty-note{color:#adc5ad;font-size:.86rem}.hint{color:#a4bfa6;font-size:.75rem;margin:18px 0 0;line-height:1.5}
+@media(max-width:700px){.groups{grid-template-columns:1fr}.group{padding:16px}}
+@media(max-width:390px){.group li{font-size:.81rem}.action{padding:5px 6px}}
+</style></head>
 <body>
 <main class="page">
 <a class="back" href="../">← Voltar à visão geral</a>
-<header><span class="eyebrow">PXG • Texugo do Mel</span><div class="head-line"><h1>Objetivos</h1><span class="summary" id="summary">10 concluídos</span></div><p class="intro">Próximos passos e conquistas da sua jornada hardcore.</p></header>
-<section aria-labelledby="active-title"><h2 id="active-title">Em andamento</h2><p class="section-sub">Os próximos marcos para acompanhar.</p><div class="active-grid" id="active-grid"></div></section>
-<section aria-labelledby="done-title"><h2 id="done-title">Concluídos</h2><p class="section-sub">Tudo o que você já conquistou.</p><div class="groups" id="done-groups"></div></section>
+<header><span class="eyebrow">PXG • Texugo do Mel</span><div class="head-line"><h1>Objetivos</h1><span class="summary" id="summary"></span></div><p class="intro">Os próximos marcos em cima. Suas conquistas, em ordem, logo abaixo.</p></header>
+<section aria-labelledby="pending-title"><h2 id="pending-title">Em andamento</h2><p class="section-sub">Metas organizadas por tópico e em ordem crescente.</p><div class="groups" id="pending"></div></section>
+<section aria-labelledby="done-title"><h2 id="done-title">Concluídos</h2><p class="section-sub">Marcos que o Texugo do Mel já alcançou.</p><div class="groups done" id="done"></div></section>
 </main>
 <script>
 (() => {
   const $=id=>document.getElementById(id);
-  const milestones=[
-    {group:'Jornada',items:['Concluir o tutorial','Evoluir Baby Cyndaquil','Chegar ao nível 20','Chegar ao nível 30']},
-    {group:'Pesca',items:['Chegar à pesca 10','Chegar à pesca 25','Chegar à pesca 40','Chegar à pesca 50']},
-    {group:'Dinheiro',items:['Juntar 10K','Juntar 20K']}
-  ];
-  let profile={level:'39',team:[{name:'Gloom'},{name:'Ditto'},{name:'Cyndaquil'}]};
+  let profile={level:'39',fishing:'50',money:'',team:[{name:'Gloom'},{name:'Ditto'},{name:'Cyndaquil'}]};
   try{const saved=JSON.parse(localStorage.getItem('pxg-profile-v1'));if(saved&&typeof saved==='object')profile={...profile,...saved}}catch(_){}
-  let gloomDone=false;
-  try{gloomDone=localStorage.getItem('pxg-gloom-evolved-v1')==='true'}catch(_){}
-  const level=Math.max(0,Number.parseInt(profile.level,10)||0);
+  let flags={vip:false,clan:false,profession:false,gloom:false};
+  try{flags={...flags,...JSON.parse(localStorage.getItem('pxg-goals-status-v1'))}}catch(_){}
+  try{if(localStorage.getItem('pxg-gloom-evolved-v1')==='true')flags.gloom=true}catch(_){}
+  function moneyValue(raw){
+    const text=String(raw||'').trim().toUpperCase();
+    let clean=text.replace(/[^\d,.-]/g,'');
+    if(!clean)return 0;
+    if(clean.includes(','))clean=clean.replace(/\./g,'').replace(',','.');
+    else if(/^\d{1,3}(\.\d{3})+$/.test(clean))clean=clean.replace(/\./g,'');
+    const value=Number(clean);return Number.isFinite(value)?value*(text.includes('K')?1000:1):0;
+  }
+  const level=Number.parseInt(profile.level,10)||0,fishing=Number.parseInt(profile.fishing,10)||0;
+  let bestMoney=25000;
+  try{bestMoney=Math.max(bestMoney,Number(localStorage.getItem('pxg-highest-money-v1'))||0,moneyValue(profile.money));localStorage.setItem('pxg-highest-money-v1',String(bestMoney))}catch(_){}
   const teamCount=(profile.team||[]).filter(member=>member?.name?.trim()).length;
-  function goal(title,description,icon,progress,target,button){
-    const card=document.createElement('article');card.className='goal';
-    const symbol=document.createElement('span');symbol.className='mark';symbol.setAttribute('aria-hidden','true');symbol.textContent=icon;
-    const heading=document.createElement('h3');heading.textContent=title;
-    const detail=document.createElement('p');detail.textContent=description;
-    const bottom=document.createElement('div');bottom.className='bottom';
-    if(target){const bar=document.createElement('div');bar.className='bar';bar.setAttribute('aria-hidden','true');const fill=document.createElement('span');fill.style.width=Math.min(100,progress/target*100)+'%';bar.append(fill);bottom.append(bar)}
-    const count=document.createElement('span');count.className='progress';count.textContent=target?progress+' / '+target: 'Planejado';bottom.append(count);
-    if(button){const action=document.createElement('button');action.type='button';action.className='complete-button';action.textContent='Marcar como concluído';action.addEventListener('click',()=>{gloomDone=true;try{localStorage.setItem('pxg-gloom-evolved-v1','true')}catch(_){}render()});bottom.append(action)}
-    card.append(symbol,heading,detail,bottom);return card;
+  function goals(){
+    const numberGoals=(values,label,current,unit)=>values.map(value=>({label:label(value),done:current>=value,unit}));
+    return [
+      {name:'Nível do personagem',items:numberGoals([20,30,50,60,80,100,120,150],n=>'Chegar ao nível '+n,level)},
+      {name:'Pesca',items:numberGoals([10,25,40,50,65,70,80,90,100],n=>'Chegar à pesca '+n,fishing)},
+      {name:'Dinheiro',items:numberGoals([10000,20000,25000,50000,75000,100000],n=>'Juntar '+(n/1000)+'K',bestMoney)},
+      {name:'Diversos',items:[
+        {label:'Concluir o tutorial',done:true},
+        {label:'Evoluir Baby Cyndaquil',done:true},
+        {label:'Evoluir o Gloom',done:flags.gloom,id:'gloom'},
+        {label:'Completar o time (6 Pokémon)',done:teamCount>=6},
+        {label:'Farmar VIP',done:flags.vip,id:'vip'},
+        {label:'Entrar em clã',done:flags.clan,id:'clan'},
+        {label:'Escolher profissão',done:flags.profession,id:'profession'}
+      ]}
+    ];
+  }
+  function saveFlag(id,value){
+    flags[id]=value;
+    try{localStorage.setItem('pxg-goals-status-v1',JSON.stringify(flags));if(id==='gloom')localStorage.setItem('pxg-gloom-evolved-v1',String(value))}catch(_){}
+    render();
+  }
+  function panel(group,done){
+    const box=document.createElement('div');box.className='group';
+    const title=document.createElement('h3');title.textContent=group.name;
+    const count=document.createElement('small');count.textContent=group.items.length+' objetivo'+(group.items.length===1?'':'s');title.append(count);
+    const list=document.createElement('ul');
+    group.items.forEach(goal=>{
+      const row=document.createElement('li');
+      const marker=document.createElement('span');marker.className='marker';marker.setAttribute('aria-hidden','true');marker.textContent=done?'✓':'';
+      const label=document.createElement('span');label.textContent=goal.label;row.append(marker,label);
+      if(goal.id){
+        const action=document.createElement('button');action.type='button';action.className='action';action.textContent=done?'Desfazer':'Concluir';
+        action.setAttribute('aria-label',(done?'Desfazer: ':'Concluir: ')+goal.label);
+        action.addEventListener('click',()=>saveFlag(goal.id,!done));row.append(action);
+      }
+      list.append(row);
+    });
+    box.append(title,list);return box;
   }
   function render(){
-    const active=$('active-grid');active.replaceChildren();
-    if(level<60)active.append(goal('Chegar ao nível 60','Próximo marco do personagem.','✦',level,60,false));
-    if(!gloomDone)active.append(goal('Evoluir o Gloom','Escolher entre Vileplume e Bellossom.','🌿',0,0,true));
-    if(teamCount<6)active.append(goal('Completar o time','Preencher os seis espaços do cartão.','◈',teamCount,6,false));
-    if(!active.children.length){const text=document.createElement('p');text.textContent='Todos os objetivos atuais foram concluídos.';active.append(text)}
-    const groups=$('done-groups');groups.replaceChildren();
-    const all=milestones.map(group=>({group:group.group,items:[...group.items]}));
-    if(level>=60)all[0].items.push('Chegar ao nível 60');
-    if(gloomDone)all[0].items.push('Evoluir o Gloom');
-    if(teamCount>=6)all[0].items.push('Completar o time');
-    all.forEach(group=>{
-      const panel=document.createElement('div');panel.className='group';
-      const title=document.createElement('h3');title.textContent=group.group;
-      const list=document.createElement('ul');
-      group.items.forEach(name=>{const row=document.createElement('li');const tick=document.createElement('span');tick.className='check';tick.textContent='✓';tick.setAttribute('aria-hidden','true');const label=document.createElement('span');label.textContent=name;row.append(tick,label);
-        if(name==='Evoluir o Gloom' && gloomDone){const undo=document.createElement('button');undo.type='button';undo.className='undo';undo.textContent='Desfazer';undo.addEventListener('click',()=>{gloomDone=false;try{localStorage.setItem('pxg-gloom-evolved-v1','false')}catch(_){}render()});row.append(undo)}
-        list.append(row)});
-      panel.append(title,list);groups.append(panel);
-    });
-    const total=all.reduce((sum,group)=>sum+group.items.length,0);
-    $('summary').textContent=total+' concluído'+(total===1?'':'s');
+    const all=goals();let pendingCount=0,doneCount=0;
+    for(const [status,container] of [[false,$('pending')],[true,$('done')]]){
+      container.replaceChildren();
+      all.forEach(group=>{
+        const filtered=group.items.filter(item=>item.done===status);
+        if(filtered.length)container.append(panel({name:group.name,items:filtered},status));
+        if(status)doneCount+=filtered.length;else pendingCount+=filtered.length;
+      });
+      if(!container.children.length){const note=document.createElement('p');note.className='empty-note';note.textContent='Nenhum objetivo aqui por enquanto.';container.append(note)}
+    }
+    $('summary').textContent=doneCount+' concluídos · '+pendingCount+' em andamento';
   }
   render();
 })();
