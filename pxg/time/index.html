@@ -5,7 +5,7 @@
 <meta name="theme-color" content="#07140d"><title>Meu time • PXG</title>
 <style>
 :root{--bg:#07140d;--panel:#10251a;--line:#365f45;--text:#f4faef;--muted:#aec4b1;--lime:#a3e27e}
-*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:var(--text);background:radial-gradient(ellipse 55% 38% at 10% 0%,#285b32,transparent 100%),radial-gradient(ellipse 48% 35% at 100% 60%,#183c2a,transparent 100%),var(--bg)}
+*{box-sizing:border-box}[hidden]{display:none!important}body{margin:0;min-height:100vh;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:var(--text);background:radial-gradient(ellipse 55% 38% at 10% 0%,#285b32,transparent 100%),radial-gradient(ellipse 48% 35% at 100% 60%,#183c2a,transparent 100%),var(--bg)}
 button,input,select{font:inherit}button{cursor:pointer}.page{width:min(1100px,100%);margin:auto;padding:25px clamp(16px,4vw,44px) 60px}.back{color:#d2eacb;text-decoration:none;font-size:.91rem}.back:hover{text-decoration:underline}
 .eyebrow{color:var(--lime);font-size:.73rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase}.head{margin:32px 0}.head h1{font-size:clamp(2.2rem,5vw,3.7rem);letter-spacing:-.05em;margin:8px 0}.head p{color:var(--muted);margin:0;line-height:1.5}
 .team-grid{max-width:900px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
@@ -17,6 +17,7 @@ dialog{width:min(760px,calc(100% - 24px));max-height:min(90vh,950px);padding:0;c
 .modal-inner{padding:clamp(20px,4vw,34px)}.modal-top{display:flex;align-items:flex-start;justify-content:space-between;gap:18px}.modal-top h2{font-size:clamp(1.8rem,5vw,2.5rem);letter-spacing:-.04em;margin:5px 0 0}.close{width:37px;height:37px;flex:none;border:1px solid #52735d;border-radius:50%;background:#23412e;color:#fff;font-size:1.3rem}
 .modal-main{display:grid;grid-template-columns:220px 1fr;gap:25px;align-items:center;margin:20px 0 25px}.modal-art{height:220px;display:grid;place-items:center;overflow:hidden;border:1px solid #587b5c;border-radius:20px;background:radial-gradient(circle,#457650,#173d28)}.modal-art img{width:100%;height:100%;object-fit:contain;padding:10px}.modal-stat{display:grid;gap:13px}.label{display:block;color:#a9c5ab;font-size:.77rem;margin-bottom:5px}.value{font-size:1.08rem;font-weight:750}.modal-types .type{padding:6px 12px}.detail-block{padding-top:20px;border-top:1px solid #47634a}.detail-block h3{font-size:1.05rem;margin:0 0 14px}.held-list{display:flex;gap:8px;flex-wrap:wrap}.held-list span{padding:8px 11px;border-radius:10px;background:#264532;color:#e8f4df;font-size:.86rem}
 .evo-path{display:flex;align-items:stretch;gap:9px;flex-wrap:wrap}.evo-node{min-width:115px;flex:1 1 120px;text-align:center;padding:11px 8px;border:1px solid #477452;border-radius:14px;background:#1b3b28}.evo-node.locked{opacity:.55}.evo-node img{display:block;width:64px;height:64px;object-fit:contain;margin:0 auto 4px}.evo-node strong{display:block;font-size:.85rem}.evo-node small{display:block;color:#bbd8b6;margin-top:3px}.evo-arrow{align-self:center;color:#9ed389}.evo-branches{display:grid;grid-template-columns:1fr 1fr;gap:8px;flex:2 1 245px}.evo-branches .evo-node{min-width:0}.evo-note{color:#a9c7aa;font-size:.79rem;margin:11px 0 0}
+.transform-panel{display:grid;grid-template-columns:110px 1fr;gap:16px;align-items:center;padding:12px;border:1px solid #4b7358;border-radius:16px;background:#193b28}.transform-panel img{width:105px;height:105px;object-fit:contain}.transform-panel strong{display:block;font-size:1.12rem}.transform-panel p{font-size:.8rem;color:#c5dcc2;margin:7px 0 0}.transform-panel .types{margin-top:6px}.transform-panel .type{min-height:27px}
 .edit{margin-top:24px;border-top:1px solid #47634a;padding-top:16px}.edit summary{cursor:pointer;color:#cce9c3;font-weight:750}.edit-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin-top:16px}.edit label{display:grid;gap:6px;color:#bfdbbd;font-size:.8rem}.edit input,.edit select{width:100%;min-width:0;padding:10px;border:1px solid #50755c;border-radius:10px;background:#071a10;color:#fff}.edit input[type=file]{font-size:.75rem}.edit-note{grid-column:1/-1;color:#aec7ad;font-size:.78rem;line-height:1.5;margin:0}.save-note{color:#abd3a5;font-size:.77rem;min-height:1.2em}
 @media(max-width:760px){.pokemon-card{min-height:160px;gap:12px;padding:12px}.pokemon-art{width:110px;height:125px}.modal-main{grid-template-columns:150px 1fr}.modal-art{height:160px}}
 @media(max-width:540px){.team-grid{gap:9px}.pokemon-card{display:block;min-height:205px;padding:10px;text-align:center}.pokemon-art{width:100%;height:125px}.pokemon-info strong{font-size:1rem;margin-top:5px}.pokemon-info small{display:none}.types{justify-content:center;margin-top:5px}.type{min-width:28px;min-height:28px;padding:3px 6px}.pokemon-card.empty{min-height:205px}.modal-main{grid-template-columns:105px 1fr;gap:12px}.modal-art{height:115px}.evo-path{gap:5px}.evo-arrow{display:none}.evo-branches{flex-basis:100%}.edit-grid{grid-template-columns:1fr}}
@@ -35,6 +36,7 @@ dialog{width:min(760px,calc(100% - 24px));max-height:min(90vh,950px);padding:0;c
     <div><span class="label">Boost</span><span class="value" id="boost"></span></div>
   </div></div>
   <section class="detail-block"><h3>Linha evolutiva</h3><div class="evo-path" id="evo-path"></div><p class="evo-note">Os níveis indicam quando o jogador pode usar cada forma.</p></section>
+  <section class="detail-block" id="transform-section"><h3>Transformação atual</h3><div class="transform-panel"><img id="transform-art" alt=""><div><strong id="transform-name"></strong><div class="types" id="transform-types"></div><p id="transform-level"></p></div></div></section>
   <section class="detail-block" style="margin-top:20px"><h3>Helds equipados</h3><div class="held-list" id="helds"></div></section>
   <details class="edit"><summary>Editar este Pokémon</summary><div class="edit-grid">
     <label>Nome<input id="edit-name" maxlength="35" placeholder="Nome do Pokémon"></label>
@@ -44,6 +46,14 @@ dialog{width:min(760px,calc(100% - 24px));max-height:min(90vh,950px);padding:0;c
     <label>Boost<input id="edit-boost" maxlength="12" placeholder="Ex.: +0, +2 ou +50"></label>
     <label>Held 1<input id="edit-held-1" maxlength="60" placeholder="Nenhum"></label>
     <label>Held 2<input id="edit-held-2" maxlength="60" placeholder="Nenhum"></label>
+    <div id="transform-editor" class="edit-grid" style="grid-column:1/-1;border-top:1px solid #47634a;padding-top:15px;margin-top:0">
+      <p class="edit-note"><strong>Transformação do Ditto</strong></p>
+      <label>Pokémon copiado<input id="edit-transform-name" maxlength="35" placeholder="Ex.: Pidgeotto"></label>
+      <label>Nível mínimo do jogador<input id="edit-transform-level" type="number" min="1" max="999" placeholder="Ex.: 20"></label>
+      <label>Tipo principal<select id="edit-transform-type-1"></select></label>
+      <label>Tipo secundário<select id="edit-transform-type-2"></select></label>
+      <label>Imagem da transformação<input id="edit-transform-image" type="file" accept="image/*"></label>
+    </div>
     <p class="edit-note">O nível do jogador vem do cartão na visão geral. A linha evolutiva cadastrada aparece automaticamente para Gloom, Ditto e Cyndaquil.</p>
   </div><p class="save-note" id="save-note" role="status"></p></details>
 </div></dialog>
@@ -65,7 +75,7 @@ dialog{width:min(760px,calc(100% - 24px));max-height:min(90vh,950px);padding:0;c
   }
   const defaults=[
     {name:'Gloom',image:'../../assets/pokemon/gloom.png',types:['grass','poison'],boost:'+0',helds:[]},
-    {name:'Ditto',image:'../../assets/pokemon/ditto.png',types:['normal'],boost:'+0',helds:['X-Boost T3','Y-wing T3']},
+    {name:'Ditto',image:'../../assets/pokemon/ditto.png',types:['normal'],boost:'+0',helds:['X-Boost T3','Y-wing T3'],transformation:{name:'Pidgeotto',image:'../../assets/pokemon/pidgeotto.png',types:['normal','flying'],level:20}},
     {name:'Cyndaquil',image:'../../assets/pokemon/cyndaquil.png',types:['fire'],boost:'+0',helds:[]},
     ...Array.from({length:3},()=>({name:'',image:'',types:[],boost:'',helds:[]}))
   ];
@@ -135,6 +145,19 @@ dialog{width:min(760px,calc(100% - 24px));max-height:min(90vh,950px);padding:0;c
     $('helds').replaceChildren();
     if(member.helds?.length)member.helds.forEach(held=>{const item=document.createElement('span');item.textContent=held;$('helds').append(item)});
     else $('helds').textContent='Nenhum';
+    const ditto=member.name.trim().toLowerCase()==='ditto';
+    $('evo-path').parentElement.hidden=ditto;
+    $('transform-section').hidden=!ditto;
+    if(ditto){
+      const copy=member.transformation || {};
+      $('transform-name').textContent=copy.name || 'Nenhuma transformação selecionada';
+      $('transform-art').hidden=!copy.image;
+      if(copy.image){$('transform-art').src=copy.image;$('transform-art').alt=copy.name || 'Transformação do Ditto'}
+      $('transform-types').replaceChildren();
+      (copy.types || []).forEach(type=>{const el=icon(type,true);if(el)$('transform-types').append(el)});
+      const required=Number.parseInt(copy.level,10);
+      $('transform-level').textContent=copy.name && required?'Jogador nível '+required+(playerLevel>=required?' · disponível pelo nível':' · ainda não liberado'):'';
+    }
     $('evo-path').replaceChildren();
     if(evo){
       evo.stages.forEach((stage,i)=>{
@@ -154,6 +177,14 @@ dialog{width:min(760px,calc(100% - 24px));max-height:min(90vh,950px);padding:0;c
     $('edit-name').value=member.name;$('edit-boost').value=member.boost || '';
     $('edit-held-1').value=member.helds?.[0] || '';$('edit-held-2').value=member.helds?.[1] || '';
     $('edit-type-1').value=member.types?.[0] || '';$('edit-type-2').value=member.types?.[1] || '';
+    const isDitto=member.name.trim().toLowerCase()==='ditto';
+    $('transform-editor').hidden=!isDitto;
+    const copy=member.transformation || {};
+    $('edit-transform-name').value=copy.name || '';
+    $('edit-transform-level').value=copy.level || '';
+    $('edit-transform-type-1').value=copy.types?.[0] || '';
+    $('edit-transform-type-2').value=copy.types?.[1] || '';
+    $('edit-transform-image').value='';
     $('edit-image').value='';$('save-note').textContent='';
     dialog.querySelector('details').open=false;dialog.showModal();
   }
@@ -162,10 +193,16 @@ dialog{width:min(760px,calc(100% - 24px));max-height:min(90vh,950px);padding:0;c
     member.name=$('edit-name').value.trim();member.boost=$('edit-boost').value.trim();
     member.types=[$('edit-type-1').value,$('edit-type-2').value].filter(Boolean);
     member.helds=[$('edit-held-1').value,$('edit-held-2').value].map(x=>x.trim()).filter(Boolean);
+    if(member.name.trim().toLowerCase()==='ditto'){
+      member.transformation=member.transformation || {};
+      member.transformation.name=$('edit-transform-name').value.trim();
+      member.transformation.level=Number.parseInt($('edit-transform-level').value,10)||0;
+      member.transformation.types=[$('edit-transform-type-1').value,$('edit-transform-type-2').value].filter(Boolean);
+    }
     renderCards();renderDetail();save();
   }
-  for(const id of ['edit-name','edit-boost','edit-held-1','edit-held-2','edit-type-1','edit-type-2'])$(id).addEventListener('input',update);
-  for(const id of ['edit-type-1','edit-type-2']){
+  for(const id of ['edit-name','edit-boost','edit-held-1','edit-held-2','edit-type-1','edit-type-2','edit-transform-name','edit-transform-level','edit-transform-type-1','edit-transform-type-2'])$(id).addEventListener('input',update);
+  for(const id of ['edit-type-1','edit-type-2','edit-transform-type-1','edit-transform-type-2']){
     const select=$(id);const blank=document.createElement('option');blank.value='';blank.textContent='Nenhum';select.append(blank);
     Object.entries(types).forEach(([value,info])=>{const option=document.createElement('option');option.value=value;option.textContent=info.label;select.append(option)});
   }
@@ -178,6 +215,21 @@ dialog{width:min(760px,calc(100% - 24px));max-height:min(90vh,950px);padding:0;c
       const canvas=document.createElement('canvas');canvas.width=Math.round(img.width*ratio);canvas.height=Math.round(img.height*ratio);
       canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height);URL.revokeObjectURL(url);
       data.team[selected].image=canvas.toDataURL('image/webp',.78);renderCards();renderDetail();save();
+    };
+    img.onerror=()=>{URL.revokeObjectURL(url);$('save-note').textContent='Não consegui abrir essa imagem.'};
+    img.src=url;
+  });
+  $('edit-transform-image').addEventListener('change',event=>{
+    const file=event.target.files?.[0];if(!file)return;
+    if(!file.type.startsWith('image/')){$('save-note').textContent='Selecione uma imagem.';return}
+    const url=URL.createObjectURL(file),img=new Image();
+    img.onload=()=>{
+      const ratio=Math.min(1,480/Math.max(img.width,img.height));
+      const canvas=document.createElement('canvas');canvas.width=Math.round(img.width*ratio);canvas.height=Math.round(img.height*ratio);
+      canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height);URL.revokeObjectURL(url);
+      data.team[selected].transformation=data.team[selected].transformation || {};
+      data.team[selected].transformation.image=canvas.toDataURL('image/webp',.78);
+      renderDetail();save();
     };
     img.onerror=()=>{URL.revokeObjectURL(url);$('save-note').textContent='Não consegui abrir essa imagem.'};
     img.src=url;
